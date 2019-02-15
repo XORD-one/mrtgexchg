@@ -1,0 +1,33 @@
+---
+name: mrtgexchg
+version: 1.0.0
+client:
+    organization: Bank
+    connection:
+        timeout:
+            peer:
+                endorser: '300'
+            orderer: '300'
+channels:
+    lending:
+        orderers:
+        - orderer.mrtgexchg.com
+        peers:
+            peer0.Bank.com: {}
+organizations:
+    Bank:
+        mspid: BankMSP
+        peers:
+        - peer0.Bank.com
+        certificateAuthorities:
+        - ca.Bank.com
+orderers:
+    orderer.example.com:
+        url: grpc://localhost:7050
+peers:
+    peer0.Bank.com:
+        url: grpc://localhost:7051
+certificateAuthorities:
+    ca.Bank.com:
+        url: http://localhost:7054
+        caName: ca.Bank.com
