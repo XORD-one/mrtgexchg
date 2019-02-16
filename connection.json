@@ -13,7 +13,7 @@
         }
     },
     "channels": {
-        "lending": {
+        "records": {
             "orderers": [
                 "orderer.mrtgexchg.com"
             ],
