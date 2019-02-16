@@ -36,7 +36,7 @@ async function main() {
         const network = await gateway.getNetwork('records');
 
         // Get the contract from the network.
-        const contract = network.getContract('recordschaincode');
+        const contract = network.getContract('records');
 
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
