@@ -18,7 +18,7 @@
                 "orderer.mrtgexchg.com"
             ],
             "peers": {
-                "peer0.mrtgexchg.com": {}
+                "peer0.Bank.com": {}
             }
         }
     },
