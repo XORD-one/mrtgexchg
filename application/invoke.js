@@ -42,7 +42,9 @@ async function main() {
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
         // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR10', 'Dave')
 
-        await contract.submitTransaction('createRealEstate','125', '5 High Strret, TX 75000', '250000', '4000 sq. ft 3 beds 2 baths blah blah', 'John Doe');
+        // await contract.submitTransaction('createRealEstate','125', '5 High Strret, TX 75000', '250000', '4000 sq. ft 3 beds 2 baths blah blah', 'John Doe');
+        await contract.createTransaction("createRealEstate")
+            .submit('125', '5 High Strret, TX 75000', '250000', '4000 sq. ft 3 beds 2 baths blah blah', 'John Doe');
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
