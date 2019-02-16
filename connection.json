@@ -2,7 +2,7 @@
     "name": "mrtgexchg",
     "version": "1.0.0",
     "client": {
-        "organization": "Bank",
+        "organization": "Registry",
         "connection": {
             "timeout": {
                 "peer": {
@@ -18,35 +18,35 @@
                 "orderer.mrtgexchg.com"
             ],
             "peers": {
-                "peer0.Bank.com": {}
+                "peer0.Registry.com": {}
             }
         }
     },
     "organizations": {
-        "Bank": {
-            "mspid": "BankMSP",
+        "Registry": {
+            "mspid": "RegistryMSP",
             "peers": [
-                "peer0.Bank.com"
+                "peer0.Registry.com"
             ],
             "certificateAuthorities": [
-                "ca.Bank.com"
+                "ca.Registry.com"
             ]
         }
     },
     "orderers": {
-        "orderer.Bank.com": {
+        "orderer.mrtgexchg.com": {
             "url": "grpc://localhost:7050"
         }
     },
     "peers": {
-        "peer0.Bank.com": {
+        "peer0.Registry.com": {
             "url": "grpc://localhost:7051"
         }
     },
     "certificateAuthorities": {
-        "ca.Bank.com": {
+        "ca.Registry.com": {
             "url": "http://localhost:7054",
-            "caName": "ca.Bank.com"
+            "caName": "ca.Registry.com"
         }
     }
 }

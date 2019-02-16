@@ -30,18 +30,18 @@ async function main() {
 
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(ccp, { wallet, identity: 'Admin@Bank.com', discovery: { enabled: false, asLocalhost: true } });
+        await gateway.connect(ccp, { wallet, identity: 'Admin@Registry.com', discovery: { enabled: false, asLocalhost: true } });
 
         // Get the network (channel) our contract is deployed to.
-        const network = await gateway.getNetwork('lending');
+        const network = await gateway.getNetwork('records');
 
         // Get the contract from the network.
-        const contract = network.getContract('lendingchaincode');
+        const contract = network.getContract('recordschaincode');
 
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
         // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR10', 'Dave')
-        await contract.submitTransaction('initiateMortgage', '11111', '11111', '10.0');
+        await contract.submitTransaction('createRealEstate','125', '5 High Strret, TX 75000', '250000', '4000 sq. ft 3 beds 2 baths blah blah', 'John Doe');
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
