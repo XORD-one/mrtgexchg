@@ -78,7 +78,7 @@ const target = [];
 // Options
 const options = {
     Registry: {
-        wallet_path: '~/mrtgexchg/application/certs',
+        wallet_path: '~/mrtgexchg/application/certs/',
         user_id: 'admin',
         channel_id: 'records',
         chaincode_id: 'recordschaincode',
