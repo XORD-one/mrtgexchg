@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 ./scripts/createChannels.sh
 sleep 5
 
