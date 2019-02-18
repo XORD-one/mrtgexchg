@@ -56,7 +56,7 @@ const sendOrderer = function(channel, request) {
             if(typeof user === "undefined")
                 throw "User not enrolled";
 
-            channel = client.getChannel('lending');
+            channel = client.getChannel('Lending');
             console.log(channel);
             const request = {
                 targets: target,
