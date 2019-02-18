@@ -53,11 +53,11 @@ const sendOrderer = function(channel, request) {
  function invoke() {
     let param = ["123", "5 High Strret, TX 75000 ", "250000","4000 sq. ft 3 beds 2 baths blah blah", "John Doe"];
     return enrollUser(client)
-        .then(async user => {
+        .then(user => {
             if(typeof user === "undefined" || !user.isEnrolled())
                 throw "User not enrolled";
 
-            channel = await client.getChannel(options.Registry.channel_id);
+            channel = client.getChannel(options.Registry.channel_id);
             const request = {
                 targets: target,
                 chaincodeId: options.Registry.chaincode_id,
