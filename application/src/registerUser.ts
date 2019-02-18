@@ -2,13 +2,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-'use strict';
+import { FileSystemWallet, Gateway, X509WalletMixin } from 'fabric-network';
+import * as fs from 'fs';
+import * as path from 'path';
 
-const { FileSystemWallet, Gateway, X509WalletMixin } = require('fabric-network');
-const fs = require('fs');
-const path = require('path');
-
-const ccpPath = path.resolve(__dirname, '..', '..', 'mrtgexchg', 'connection.json');
+const ccpPath = path.resolve(__dirname, '..', '..', 'connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
 const ccp = JSON.parse(ccpJSON);
 
@@ -31,7 +29,7 @@ async function main() {
         const adminExists = await wallet.exists('admin');
         if (!adminExists) {
             console.log('An identity for the admin user "admin" does not exist in the wallet');
-            console.log('Run the enrollAdmin.js application before retrying');
+            console.log('Run the enrollAdmin.ts application before retrying');
             return;
         }
 
@@ -44,9 +42,9 @@ async function main() {
         const adminIdentity = gateway.getCurrentIdentity();
 
         // Register the user, enroll the user, and import the new identity into the wallet.
-        const secret = await ca.register({ affiliation: 'Bank.department1', enrollmentID: 'user1', role: 'client' }, adminIdentity);
+        const secret = await ca.register({ affiliation: 'Registry.department1', enrollmentID: 'user1', role: 'client' }, adminIdentity);
         const enrollment = await ca.enroll({ enrollmentID: 'user1', enrollmentSecret: secret });
-        const userIdentity = X509WalletMixin.createIdentity('BankMSP', enrollment.certificate, enrollment.key.toBytes());
+        const userIdentity = X509WalletMixin.createIdentity('RegistryMSP', enrollment.certificate, enrollment.key.toBytes());
         wallet.import('user1', userIdentity);
         console.log('Successfully registered and enrolled admin user "user1" and imported it into the wallet');
 

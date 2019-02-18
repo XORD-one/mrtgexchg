@@ -2,14 +2,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-'use strict';
+import * as FabricCAServices from 'fabric-ca-client';
+import { FileSystemWallet, X509WalletMixin } from 'fabric-network';
+import * as fs from 'fs';
+import * as path from 'path';
 
-const FabricCAServices = require('fabric-ca-client');
-const { FileSystemWallet, X509WalletMixin } = require('fabric-network');
-const fs = require('fs');
-const path = require('path');
-
-const ccpPath = path.resolve(__dirname, '..', '..', 'mrtgexchg', 'connection.json');
+const ccpPath = path.resolve(__dirname, '..', '..', 'connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
 const ccp = JSON.parse(ccpJSON);
 
@@ -17,7 +15,7 @@ async function main() {
     try {
 
         // Create a new CA client for interacting with the CA.
-        const caURL = ccp.certificateAuthorities['ca.Bank.com'].url;
+        const caURL = ccp.certificateAuthorities['ca.Registry.com'].url;
         const ca = new FabricCAServices(caURL);
 
         // Create a new file system based wallet for managing identities.
@@ -34,7 +32,7 @@ async function main() {
 
         // Enroll the admin user, and import the new identity into the wallet.
         const enrollment = await ca.enroll({ enrollmentID: 'admin', enrollmentSecret: 'adminpw' });
-        const identity = X509WalletMixin.createIdentity('BankMSP', enrollment.certificate, enrollment.key.toBytes());
+        const identity = X509WalletMixin.createIdentity('RegistryMSP', enrollment.certificate, enrollment.key.toBytes());
         wallet.import('admin', identity);
         console.log('Successfully enrolled admin user "admin" and imported it into the wallet');
 
