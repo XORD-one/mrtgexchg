@@ -269,7 +269,7 @@ func (c *Mrtgexchg) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 		return c.queryAll(stub)
 	}
 
-	return shim.Error("+~+~+~+~+No matching chain code function found-- create, initiate, close and record mortgage can only be invoked by chaincode instantiators which are Bank, Registry and Appraiser+~+~+~+~+~+~+~+~")
+	//return shim.Error("+~+~+~+~+No matching chain code function found-- create, initiate, close and record mortgage can only be invoked by chaincode instantiators which are Bank, Registry and Appraiser+~+~+~+~+~+~+~+~")
 	return shim.Error(function)
 }
 
