@@ -7,12 +7,23 @@ const target = [];
 
 let channel;
 
+const options = {
+    Registry: {
+        wallet_path: '~/mrtgexchg/application/certs/',
+        user_id: 'admin',
+        channel_id: 'records',
+        chaincode_id: 'recordschaincode',
+        peer_url: 'grpc://localhost:9051',
+        orderer_url: 'grpc://localhost:7050'
+    }
+};
+
 const enrollUser = function(client) {
-    console.log(options.wallet_path);
-    return hfc.newDefaultKeyValueStore({ path: options.wallet_path })
+    console.log(options.Registry.wallet_path);
+    return hfc.newDefaultKeyValueStore({ path: options.Registry.wallet_path })
         .then(wallet => {
             client.setStateStore(wallet);
-            return client.getUserContext(options.user_id, true);
+            return client.getUserContext(options.Registry.user_id, true);
         });
 };
 
@@ -36,7 +47,7 @@ const responseInspect = function(results) {
 
 const sendOrderer = function(channel, request) {
     return channel.sendTransaction(request);
-};1
+};
 
 // Function invokes transfer
  function invoke() {
@@ -46,13 +57,13 @@ const sendOrderer = function(channel, request) {
             if(typeof user === "undefined" || !user.isEnrolled())
                 throw "User not enrolled";
 
-            channel = await client.getChannel(options.channel_id);
+            channel = await client.getChannel(options.Registry.channel_id);
             const request = {
                 targets: target,
-                chaincodeId: options.chaincode_id,
+                chaincodeId: options.Registry.chaincode_id,
                 fcn: 'createRealEstate',
                 args: param,
-                chainId: options.channel_id,
+                chainId: options.Registry.channel_id,
                 txId: null
             };
             return transactionProposal(client, channel, request);
@@ -76,18 +87,6 @@ const sendOrderer = function(channel, request) {
             console.log(err);
             throw err;
         });
-};
-
-// Options
-const options = {
-    Registry: {
-        wallet_path: '~/mrtgexchg/application/certs/',
-        user_id: 'admin',
-        channel_id: 'records',
-        chaincode_id: 'recordschaincode',
-        peer_url: 'grpc://localhost:9051',
-        orderer_url: 'grpc://localhost:7050'
-    }
 };
 
 invoke();
