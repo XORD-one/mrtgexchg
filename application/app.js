@@ -1,8 +1,14 @@
 'use strict'; // self-defence
 
 const hfc = require('fabric-client');
+
+const client = new hfc();
+const target = [];
+
 let channel;
-const enrolUser = function(client, options) {
+
+const enrollUser = function(client) {
+    console.log(options.wallet_path);
     return hfc.newDefaultKeyValueStore({ path: options.wallet_path })
         .then(wallet => {
             client.setStateStore(wallet);
@@ -30,15 +36,12 @@ const responseInspect = function(results) {
 
 const sendOrderer = function(channel, request) {
     return channel.sendTransaction(request);
-};
-
-const client = new hfc();
-const target = [];
+};1
 
 // Function invokes transfer
  function invoke() {
     let param = ["123", "5 High Strret, TX 75000 ", "250000","4000 sq. ft 3 beds 2 baths blah blah", "John Doe"];
-    return enrolUser(client, options)
+    return enrollUser(client)
         .then(async user => {
             if(typeof user === "undefined" || !user.isEnrolled())
                 throw "User not enrolled";
