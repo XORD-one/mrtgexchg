@@ -56,7 +56,8 @@ const sendOrderer = function(channel, request) {
             if(typeof user === "undefined")
                 throw "User not enrolled";
 
-            channel = client.getChannel(options.Registry.channel_id);
+            channel = client.getChannel('lending');
+            console.log(channel);
             const request = {
                 targets: target,
                 chaincodeId: options.Registry.chaincode_id,
