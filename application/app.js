@@ -36,14 +36,14 @@ const client = new hfc();
 const target = [];
 
 // Function invokes transfer
-function invoke() {
+ function invoke() {
     let param = ["123", "5 High Strret, TX 75000 ", "250000","4000 sq. ft 3 beds 2 baths blah blah", "John Doe"];
     return enrolUser(client, options)
-        .then(user => {
+        .then(async user => {
             if(typeof user === "undefined" || !user.isEnrolled())
                 throw "User not enrolled";
 
-            channel = client.getChannel(options.channel_id);
+            channel = await client.getChannel(options.channel_id);
             const request = {
                 targets: target,
                 chaincodeId: options.chaincode_id,
