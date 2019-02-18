@@ -79,7 +79,7 @@ function invoke() {
 const options = {
     Registry: {
         wallet_path: '~/mrtgexchg/application/certs',
-        user_id: 'RegistryAdmin',
+        user_id: 'admin',
         channel_id: 'records',
         chaincode_id: 'recordschaincode',
         peer_url: 'grpc://localhost:9051',
