@@ -19,7 +19,7 @@ services:
     - ./crypto-config/peerOrganizations/Registry.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.Registry.com
     networks:
-    - basic
+    - mrtgexchg
 
   orderer.mrtgexchg.com:
     image: hyperledger/fabric-orderer:x86_64-1.0.0
