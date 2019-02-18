@@ -25,22 +25,22 @@ docker exec cli.Registry bash -c "peer chaincode invoke -C records -n recordscha
 docker exec cli.Registry bash -c "peer chaincode invoke -C records -n recordschaincode -v 0 -c '{\"Args\":[\"createRealEstate\", \"22222\", \"5 High Strret, LA 75004 \",\"800000\",\"6500 sq. ft 6 beds 4 baths blah blah\", \"The man\"]}'"
 sleep ${FABRIC_START_WAIT}
 
-echo -e "----------\e[5;32;40mNow creating Books on the books blockchain with real estate as the key\e[m --------------------------------"
-docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"123\"]}'"
-docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"456\"]}'"
-docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"789\"]}'"
-docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"1234\"]}'"
-docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"4567\"]}'"
-docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"11111\"]}'"
-docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"891011\"]}'"
-docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"12131415\"]}'"
-docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"16171819\"]}'"
-docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"22222\"]}'"
-sleep ${FABRIC_START_WAIT}
-
-echo -e " ...........\e[5;32;40m  now running a query on all ledgers to dump the ledger data\e[m"
-docker exec cli.Audit bash -c "peer chaincode query -C records -n recordschaincode -v 0 -c '{\"Args\":[\"queryAll\"]}'"
-sleep ${FABRIC_query_WAIT}
-docker exec cli.Audit bash -c "peer chaincode query -C lending -n lendingchaincode -v 0 -c '{\"Args\":[\"queryAll\"]}'"
-sleep ${FABRIC_query_WAIT}
-docker exec cli.Audit bash -c "peer chaincode query -C books -n bookschaincode -v 0 -c '{\"Args\":[\"queryAll\"]}'"
+#echo -e "----------\e[5;32;40mNow creating Books on the books blockchain with real estate as the key\e[m --------------------------------"
+#docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"123\"]}'"
+#docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"456\"]}'"
+#docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"789\"]}'"
+#docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"1234\"]}'"
+#docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"4567\"]}'"
+#docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"11111\"]}'"
+#docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"891011\"]}'"
+#docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"12131415\"]}'"
+#docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"16171819\"]}'"
+#docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"initiateBooks\", \"22222\"]}'"
+#sleep ${FABRIC_START_WAIT}
+#
+#echo -e " ...........\e[5;32;40m  now running a query on all ledgers to dump the ledger data\e[m"
+#docker exec cli.Audit bash -c "peer chaincode query -C records -n recordschaincode -v 0 -c '{\"Args\":[\"queryAll\"]}'"
+#sleep ${FABRIC_query_WAIT}
+#docker exec cli.Audit bash -c "peer chaincode query -C lending -n lendingchaincode -v 0 -c '{\"Args\":[\"queryAll\"]}'"
+#sleep ${FABRIC_query_WAIT}
+#docker exec cli.Audit bash -c "peer chaincode query -C books -n bookschaincode -v 0 -c '{\"Args\":[\"queryAll\"]}'"
