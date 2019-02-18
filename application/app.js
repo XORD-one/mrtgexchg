@@ -19,7 +19,6 @@ const options = {
 };
 
 const enrollUser = function(client) {
-    console.log(options.Registry.wallet_path);
     return hfc.newDefaultKeyValueStore({ path: options.Registry.wallet_path })
         .then(wallet => {
             client.setStateStore(wallet);
@@ -54,7 +53,7 @@ const sendOrderer = function(channel, request) {
     let param = ["123", "5 High Strret, TX 75000 ", "250000","4000 sq. ft 3 beds 2 baths blah blah", "John Doe"];
     return enrollUser(client)
         .then(user => {
-            if(typeof user === "undefined" || !user.isEnrolled())
+            if(typeof user === "undefined")
                 throw "User not enrolled";
 
             channel = client.getChannel(options.Registry.channel_id);
