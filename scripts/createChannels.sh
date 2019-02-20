@@ -58,7 +58,7 @@ sleep ${FABRIC_START_WAIT}
 docker exec cli.Audit bash -c 'peer channel join -b books.block'
 sleep ${FABRIC_START_WAIT}
 
-#Fico  joins 1 channels,
+#fico  joins 1 channels,
 docker exec cli.Fico bash -c 'peer channel join -b lending.block'
 sleep ${FABRIC_START_WAIT}
 

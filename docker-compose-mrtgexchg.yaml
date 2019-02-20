@@ -62,18 +62,18 @@ services:
       - mrtgexchg
 
   peer0.Insurance.com:
-    container_name: peer0.Insurance.com
+    container_name: peer0.insurance.com
     extends:
       file: ./peer.yaml
       service: peer
     environment:
-      - CORE_PEER_ID=peer0.Insurance.com
-      - CORE_PEER_ADDRESS=peer0.Insurance.com:7051
+      - CORE_PEER_ID=peer0.insurance.com
+      - CORE_PEER_ADDRESS=peer0.insurance.com:7051
       - CORE_PEER_LOCALMSPID=InsuranceMSP
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.Insurance.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.insurance.com:7051
     volumes:
-      - ./crypto-config/peerOrganizations/Insurance.com/peers/peer0.Insurance.com/msp:/etc/hyperledger/msp/peer
+      - ./crypto-config/peerOrganizations/insurance.com/peers/peer0.insurance.com/msp:/etc/hyperledger/msp/peer
     ports:
       - 10051:7051
       - 10053:7053
@@ -167,18 +167,18 @@ services:
           - mrtgexchg
 
   peer0.Fico.com:
-        container_name: peer0.Fico.com
+        container_name: peer0.fico.com
         extends:
           file: ./peer.yaml
           service: peer
         environment:
-          - CORE_PEER_ID=peer0.Fico.com
-          - CORE_PEER_ADDRESS=peer0.Fico.com:7051
+          - CORE_PEER_ID=peer0.fico.com
+          - CORE_PEER_ADDRESS=peer0.fico.com:7051
           - CORE_PEER_LOCALMSPID=FicoMSP
           - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/
-          - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.Fico.com:7051
+          - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.fico.com:7051
         volumes:
-          - ./crypto-config/peerOrganizations/Fico.com/peers/peer0.Fico.com/msp:/etc/hyperledger/msp/peer
+          - ./crypto-config/peerOrganizations/fico.com/peers/peer0.fico.com/msp:/etc/hyperledger/msp/peer
         ports:
           - 13051:7051
           - 13053:7053
@@ -209,14 +209,14 @@ services:
     extends:
       file: ./cli.yaml
       service: cli
-    container_name: cli.Insurance
+    container_name: cli.insurance
     environment:
-      - CORE_PEER_ID=cli.Insurance.com
-      - CORE_PEER_ADDRESS=peer0.Insurance.com:7051
+      - CORE_PEER_ID=cli.insurance.com
+      - CORE_PEER_ADDRESS=peer0.insurance.com:7051
       - CORE_PEER_LOCALMSPID=InsuranceMSP
-      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@Insurance.com/msp
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@insurance.com/msp
     volumes:
-      - ./crypto-config/peerOrganizations/Insurance.com:/etc/hyperledger/msp
+      - ./crypto-config/peerOrganizations/insurance.com:/etc/hyperledger/msp
     depends_on:
       - orderer.mrtgexchg.com
       - peer0.Insurance.com
@@ -299,14 +299,14 @@ services:
     extends:
       file: ./cli.yaml
       service: cli
-    container_name: cli.Fico
+    container_name: cli.fico
     environment:
-      - CORE_PEER_ID=cli.Fico.com
-      - CORE_PEER_ADDRESS=peer0.Fico.com:7051
+      - CORE_PEER_ID=cli.fico.com
+      - CORE_PEER_ADDRESS=peer0.fico.com:7051
       - CORE_PEER_LOCALMSPID=FicoMSP
-      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@Fico.com/msp
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@fico.com/msp
     volumes:
-      - ./crypto-config/peerOrganizations/Fico.com:/etc/hyperledger/msp
+      - ./crypto-config/peerOrganizations/fico.com:/etc/hyperledger/msp
     depends_on:
       - orderer.mrtgexchg.com
       - peer0.Fico.com

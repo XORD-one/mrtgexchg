@@ -23,7 +23,7 @@ echo -e "................\e[5;32;40mAudit query lending ledger for the ficoScore
 docker exec cli.Audit bash -c "peer chaincode query -C lending -n lendingchaincode -v 0 -c '{\"Args\":[\"query\",\"TestCustomer12131415\"]}'"
 sleep ${FABRIC_START_WAIT}
 
-echo -e "................\e[5;32;40mrequest Appraisal \e[m........................"
+echo -e "................\e[5;32;40mrequest appraisal \e[m........................"
 docker exec cli.Appraiser bash -c "peer chaincode invoke -C books -n bookschaincode -v 0 -c '{\"Args\":[\"getAppraisal\", \"12131415\"]}'"
 sleep ${FABRIC_START_WAIT}
 
@@ -31,7 +31,7 @@ echo -e "................\e[5;32;40mAudit query books ledger for the appraiser c
 docker exec cli.Audit bash -c "peer chaincode query -C books -n bookschaincode -v 0 -c '{\"Args\":[\"query\",\"12131415\"]}'"
 sleep ${FABRIC_START_WAIT}
 
-echo -e "................\e[5;32;40mrequest Insurance quote \e[m ..................................."
+echo -e "................\e[5;32;40mrequest insurance quote \e[m ..................................."
 docker exec cli.Bank bash -c "peer chaincode invoke -C lending -n lendingchaincode -v 0 -c '{\"Args\":[\"getInsuranceQuote\", \"TestCustomer12131415\", \"12131415\"]}'"
 sleep ${FABRIC_START_WAIT}
 

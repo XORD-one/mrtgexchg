@@ -10,8 +10,8 @@ PeerOrgs:
       Count: 1
     Users:
       Count: 1
-  - Name: Insurance
-    Domain: Insurance.com
+  - Name: insurance
+    Domain: insurance.com
     Template:
       Count: 1
     Users:
@@ -40,8 +40,8 @@ PeerOrgs:
       Count: 1
     Users:
       Count: 1
-  - Name: Fico
-    Domain: Fico.com
+  - Name: fico
+    Domain: fico.com
     Template:
       Count: 1
     Users:

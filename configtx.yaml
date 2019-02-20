@@ -15,9 +15,9 @@ Organizations:
     - &Insurance
         Name: InsuranceMSP
         ID: InsuranceMSP
-        MSPDir: crypto-config/peerOrganizations/Insurance.com/msp
+        MSPDir: crypto-config/peerOrganizations/insurance.com/msp
         AnchorPeers:
-            - Host: peer0.Insurance.com
+            - Host: peer0.insurance.com
               Port: 7051
 
     - &Registry
@@ -54,9 +54,9 @@ Organizations:
     - &Fico
         Name: FicoMSP
         ID: FicoMSP
-        MSPDir: crypto-config/peerOrganizations/Fico.com/msp
+        MSPDir: crypto-config/peerOrganizations/fico.com/msp
         AnchorPeers:
-            - Host: peer0.Fico.com
+            - Host: peer0.fico.com
               Port: 7051
 
 Application: &ApplicationDefaults
