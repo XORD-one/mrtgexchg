@@ -3,6 +3,28 @@
 
 export FABRIC_START_WAIT=5
 
+CHAINCODE_NAME=mrtgexchg
+CHAINCODE_VERSION=1.0
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+
+# don't rewrite paths for Windows Git Bash users
+export MSYS_NO_PATHCONV=1
+starttime=$(date +%s)
+LANGUAGE=${1:-"node"}
+
+cd $DIR
+cd ./chaincode/node
+yarn
+yarn run clean
+yarn run build
+CC_SRC_PATH=/opt/gopath/src/github.com/phr/node
+
+# clean the keystore
+rm -rf ./hfc-key-store
+
+cd $DIR
+
 echo -e '-----------------------\e[5;32;40m Install chaincodes\e[m---------------------------------------------------------'
 
 echo " ----------------------------- For Records channel --------------------------------------------"
